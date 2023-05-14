@@ -1,3 +1,4 @@
+from ctypes import resize
 import tkinter as tk
 #ウィンドウを表示するモジュール
 import tkinter.filedialog as fd
@@ -9,8 +10,12 @@ import PIL.ImageTk
 
 def dispPhoto(path):
     #画像ファイルを表示する関数
-    newImage = PIL.Image.open(path).convert("L").resize((300,300))
-    #画像を読み込む。convert:グレースケール変換。resize:大きさを変換
+    newImage = PIL.Image.open(path).convert("L").resize((32,32)).resize((300,300), resample=0)
+    """
+    画像を読み込む。convert:グレースケール変換。
+    resize:大きさを変換(小さく変換してから大きく変換する→
+    画像を小さくすることで情報量を減らすことにより画像が大きいときはなめらかでも小さくすると粗くなる)
+    """
     imageData = PIL.ImageTk.PhotoImage(newImage)
     imageLabel.configure(image = imageData)
     imageLabel.image = imageData
