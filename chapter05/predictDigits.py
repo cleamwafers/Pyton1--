@@ -28,5 +28,5 @@ def predictDigits(data):
 
 #画像ファイルを数値リストに変換する
 data = imageToData("/Users/miki/Pyton1年生/chapter05/2.png")
-#数字を予測する
+#数値リストを受け取ったpredictDigits関数が数字を予測する
 predictDigits(data)
