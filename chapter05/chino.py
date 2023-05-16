@@ -1,3 +1,4 @@
+#注:細い線で書かれた数字は学習させてないので認識されません。
 import tkinter as tk
 import tkinter.filedialog as fd
 import PIL.Image 
@@ -16,11 +17,12 @@ def imageToData(filename):
     dispImage = PIL.ImageTk.PhotoImage(grayImage.resize((300,300),resample=0))
     imageLabel.configure(image = dispImage)
     imageLabel.image = dispImage
-    # 数値リストに変換
+    # 8x8のグレースケールに変換した画像データを数値リストに変換
     numImage = numpy.asarray(grayImage, dtype = float)
     numImage = numpy.floor(16 - 16 * (numImage / 256))
     numImage = numImage.flatten()
     return numImage
+    #↑returnで関数の呼び出し元へ返す。
 
 # 数字を予測する
 def predictDigits(data):
@@ -29,7 +31,7 @@ def predictDigits(data):
     # 機械学習する
     clf = sklearn.svm.SVC(gamma = 0.001)
     clf.fit(digits.data, digits.target)
-    # 予測結果を表示する
+    # 予測結果をラベルに表示する
     n = clf.predict([data])
     textLabel.configure(text = "この画像は"+str(n)+"です！")
 
