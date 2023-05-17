@@ -17,7 +17,7 @@
         <h4>ダイアログで表示されるエラー</h4>
             <li>単純な入力ミスや打ち間違いやインデントがずれていないかを確認する。</li>
             <ol>
-                <li><color font="red">『invalid syntax』『invalid character』</color></li>
+                <li><font color="red">『invalid syntax』『invalid character』</font></li>
                     <p>『無駄な命令文があります』、『無効な文字があります』というエラー</p>
                     <h5><u>以下に注意する</u></h5>
                         <p>変数や関数の『名前のスペル』を間違えていないか</p>
@@ -25,7 +25,79 @@
                         <p>『半角英数文字と全角文字』を間違えていないか</p>
                         <p>『形の似た文字』を間違えていないか</p>
 
-                        <p><span>形の似た文字の例</span></p>
+                        <h5><u>形の似た文字の例</u></h5>
+                            <p>『.(ピリオド)』と『,(カンマ)』</p>
+                            <p>『o(オー)』と『0(数字のゼロ)』</p>
+                            <p>『l(小文字のエル)』『I(大文字のアイ)』</p>
+                            <p>『z(ゼット)』と『2(数字のニ)』</p>
+                            <p>『B(ビー)』と『8(数字のハチ)』</p>
+                
+                <li><font color="red">『expected』</font></li>
+                    <p>『if文やfor文やdel文の行末にあるはずの:が見つかりません』というエラー</p>
+                
+                <li><font color="red">『unexpected indent』</font></li>
+                    <p>『不要なインデントがあります。』というエラー</p>
+
+                <li><font color="red">『expected an indented block』<br>
+                    『unindent does not match any outer indentation level』</font></li>
+                    <p>『インデントにズレがあります。』というエラー</p>
+                
+                <li><font color="red">『unterminated string literal』</font></li>
+                    <P>『文字列の最後(文字列を閉じる側のダブルクォーテーション[""]またはシングルクォーテーション['']が足りない)が綴じられていません』というエラー</P>
+                
+                <li><font color="red">『'('was never closed 』『unmatched')'』</font></li>
+                    <p>『綴じカッコ[丸かっこ()や角かっこ[]]がありません(または多すぎます)』というエラー</p>
             </ol>
+
+        <h4>赤い文字で表示されるエラー</h4>
+            <li>多くの場合がうっかり書き間違えたようなミス。</li>
+            <li>肝心なのはエラー表示の一番最後の行。</li>
+            <ol>
+                <li><font color="red">『NameError; name 'xxx' is not defined』</font></li>
+                    <p>『この名前の変数名や関数名が見つかりません』</p>
+                        <h5><u>以下を確認しましょう。</u></h5>
+                        <p>エラーの場所の『変数名』や『関数名』を間違えていないか<br>
+                            例:printがPrintになってしまっている。
+                        </p>
+                        <p>『変数や関数を作ったとき』に名前を間違えていないか→遡って変数や関数を作ったときの名前を確認する。<br>
+                            例:変数名『bmi』を間違えて『bm1』と書いてしまった場合。
+                        </p>
+                        <p>タートルプログラムのファイル名を『turtle.py』にしていないか<br>
+                            そのフォルダ内にライブラリと同じ名前のファイルがあると正しく動かなくなるので同じ名前にしない。<br>
+                            例:NameError: name 'shape' is not defined 'shape'という名前の命令を知りません。という意味
+                        </p>
+                
+                <li><font color="red">『ModuleNotFondError: No module named 'xxx'』</font></li>
+                        <p>『その名前のモジュール(ライブラリ)が見つかりません』というエラー</p>
+                            <h5><u>以下に注意する</u></h5>
+                                <p>『ライブラリ名』を間違えていないか→大文字や小文字が間違って居るだけでもエラーになる。<br>
+                                    例①:ModuleNotFoundError: No module named 'pil'→『'pil'という名前のライブラリが見つかりません。』という意味。<br>
+                                        原因『PIL.Image』を間違えて『pil.Image』と書いている<br>
+                                    例②:ModuleNotFoundError: No module named 'PIL.ImageTK'→『'PIL.ImageTK'という名前のライブラリが見つかりません。』という意味。<br>
+                                        原因『PIL.ImageTk』を間違えて『PIL.ImageTK』と書いている。
+                                </p>
+                                <p>ライブラリを正しくインストールしているか→ライブラリ名は正しいのにエラーが出るときはライブラリが正しくインストールされていない可能性がある。<br>
+                                    Python言語は『一つのパソコンの中に複数のバージョンをインストールすることができる』
+                                </p>
+
+                <li><font color="red">『FileNotFoundError: [Errno 2]No such file or directory: 'xxx'』</font></li>
+                        <p>『読み込もうとしたら、ファイルが見つかりませんでした』というエラー</p> 
+                            <p>そのプログラムのフォルダ内に指定したファイルがあるか確認する。なければファイルを用意する。<br>
+                                    例①:FileNotFondError: [Errno 2]No such file or directory: '2.png'→『'2,png'というファイルかフォルダが見つかりません。』という意味。<br>
+                                        原因プログラムで読み込む『2,png』ファイルがない場合
+                            </p> 
+
+                <li><font color="red">『TclErrpr: bad geometry specifier "xxx"』</font></li>
+                        <p>『tkinterのパラメータが間違っています』というエラー</p>
+                        <p>tkinterではtkinterが決めた記号でしか正しく動きません。例:『root.geometry("200x100")』の『x』の記号には『半角英数字の小文字のエックス』を使ってください。</p>
+                        <p>_thinter.TclError: bad geometry specifier "200X100"<br>
+                            意味:『tkinterの'200X100'というパラメータが間違っているようです。』
+                        </p>
+
+                <li><font color="red">『ValueError:'Grays'is not a valid value for name』</font></li>
+                    <p>『指定された名前のパラメーターが間違っています』というエラー</p>
+                    <p>ValueError:'Grays'is not a valid value for name;<br>
+                        意味:『'Grays'という名前のパラメータが間違って居るようです。』 原因:『Greys』を間違えて『Grays』と書いている場合
+                    </p>
     </body>
 </html>
